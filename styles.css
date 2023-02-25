@@ -29,7 +29,8 @@ a:visited {
   position: relative;
 }
 
-.navbar-links {
+.navbar-links,
+.navbar-links__menu {
   list-style: none;
   text-transform: uppercase;
 }
@@ -40,7 +41,15 @@ a:visited {
   transition: color 0.3s;
 }
 
-.navbar-links li:hover {
+.navbar-links__menu li {
+  display: block;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 1rem;
+  transition: color 0.3s;
+}
+
+.navbar-links li:hover,
+.navbar-links__menu li:hover {
   color: #ffffff;
 }
 
@@ -70,13 +79,62 @@ a:visited {
   display: block;
 }
 
-.navbar-icons {
+.navbar-icons,
+.navbar-icons__menu {
   font-size: 20px;
 }
 
-.navbar-icons > *:not(:last-child) {
+.navbar-icons > *,
+.navbar-icons__menu > * {
+  cursor: pointer;
+}
+
+.navbar-icons > *:not(:last-child),
+.navbar-icons__menu *:not(:last-child) {
   margin-right: 0.5rem;
   cursor: pointer;
+}
+
+.navbar-menu {
+  display: none;
+  cursor: pointer;
+}
+
+.navbar-menu > * {
+  font-size: 32px;
+  text-align: center;
+  padding-top: 16px;
+}
+
+.menu-box {
+  padding: 2rem;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #0b0b0b;
+  width: 16rem;
+  transform: translateX(-340px);
+  z-index: 999;
+  transition: transform 0.3s;
+}
+
+.menu-box__visible {
+  transform: translateX(0);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 777;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.overlay-invisible {
+  display: none;
 }
 
 .heading {
@@ -178,5 +236,61 @@ a:visited {
   100% {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+
+/* Responsiveness */
+@media screen and (max-width: 1082px) {
+  .navbar {
+    height: fit-content;
+    align-items: end;
+  }
+
+  .navbar-links,
+  .navbar-icons {
+    display: none;
+  }
+
+  .navbar-menu {
+    display: block;
+  }
+
+  .navbar-brand {
+    position: static;
+    transform: translateX(0);
+    align-self: center;
+  }
+
+  .navbar-brand span:first-child {
+    font-size: 2rem;
+  }
+
+  .navbar-brand span:last-child {
+    font-size: 0.7rem;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .heading {
+    font-size: 4rem;
+    padding: 0 1rem;
+  }
+
+  .images {
+    flex-direction: column;
+  }
+
+  .images img {
+    width: 100%;
+  }
+
+  .images img:not(:last-child) {
+    margin-bottom: 5px;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .heading {
+    font-size: 3.5rem;
   }
 }
